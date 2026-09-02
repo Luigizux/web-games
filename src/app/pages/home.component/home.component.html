@@ -1,0 +1,10 @@
+
+<h1>Selecciona tu juego favorito</h1>
+<div class="grid">
+    @for(card of menucards; track card.path){
+        <div class="card">
+            <h3>{{card.data.title}}</h3>
+            <button class="btn primary" [routerLink]="card.path">Jugar</button>
+        </div>
+    }
+</div>

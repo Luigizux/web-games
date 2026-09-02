@@ -11,5 +11,5 @@
     }
 </div>
 
-@if (hasWinner) { <button class="btn primary">Limpiar tablero</button> }
+@if (hasWinner) { <button class="btn primary" (click)="resetGame()">Limpiar tablero</button> }
 <button class="btn primary" [routerLink]="['/']">Volver al home</button>

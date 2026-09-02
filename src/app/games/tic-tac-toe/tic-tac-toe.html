@@ -1,20 +1,15 @@
-<body>
-    <h1>TIC TAC TOE</h1>
-    @if(!hasWinner){<h2>Turno del jugador {{jugador}}</h2>}
-    @if(hasWinner){<h2>Ha ganado el jugador {{jugador}}</h2>}
-    <div class="tablero">
-        @for (fila of tablero; track fila; let i = $index) {
-        <div class="fila">
-            @for (columna of fila; track columna; let j = $index) {
-            <input class="celdas"
-                type="button"
-                (click)="onClick(i,j)"
-                value={{columna}}>
-            }
-        </div>
+<h1>TIC TAC TOE</h1>
+@if(!hasWinner){<h2>Turno del jugador {{jugador}}</h2>}
+@if(hasWinner){<h2>Ha ganado el jugador {{jugador}}</h2>}
+<div class="tablero">
+    @for (fila of tablero; track fila; let i = $index) {
+    <div class="fila">
+        @for (columna of fila; track columna; let j = $index) {
+        <input class="celdas" type="button" (click)="onClick(i,j)" value={{columna}}>
         }
     </div>
+    }
+</div>
 
-    @if (hasWinner) { <button class="btn primary">Limpiar tablero</button> }
-    <button class="btn primary" [routerLink]="['/']">Volver al home</button>
-</body>
+@if (hasWinner) { <button class="btn primary">Limpiar tablero</button> }
+<button class="btn primary" [routerLink]="['/']">Volver al home</button>

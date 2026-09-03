@@ -1,1 +1,32 @@
-<p>memory works!</p>
+<h1>Memory Game</h1>
+<div class="d-flex flex-wrap gap-3 justify-content-center">
+
+    <div class="card">
+        <h2>Instrucciones</h2>
+        <p>El juego consiste en un tablero de cartas boca abajo. El objetivo es encontrar pares de cartas iguales. Los
+            jugadores se turnan para voltear dos cartas a la vez. Si las cartas coinciden, el jugador las retira del
+            tablero y puede continuar jugando. Si no coinciden, las cartas se vuelven a colocar boca abajo y el turno
+            pasa al siguiente jugador. El juego continúa hasta que se hayan encontrado todos los pares de cartas.</p>
+    </div>
+
+    <div class="tablero">
+        <div class="m-3">
+            @for (fila of tablero(); track $index; let i = $index) {
+            <div class="fila">
+                @for (columna of fila; track $index; let j = $index) {
+                <input class="celdas" 
+                        type="button" 
+                        (click)="onCardClick(i,j)" 
+                            [value]="flippedCards().some(card => card.x === i && card.y === j)
+                                    ? iconsCards[columna] 
+                                    : '?'">
+                                }
+            </div>
+            }
+        </div>
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <button class="tertiary-button" (click)="resetGame()">Reiniciar juego</button>
+            <button class="secondary-button" [routerLink]="['/']">Volver al home</button>
+        </div>
+    </div>
+</div>

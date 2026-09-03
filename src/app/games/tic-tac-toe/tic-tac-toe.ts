@@ -15,8 +15,10 @@ export class TicTacToeComponent {
     ["", "", ""],
     ["", "", ""],
   ];
+  marcador: string[] = [];
   jugador: number = 1;
   hasWinner: boolean = false;
+  hasDraw: boolean = false;
 
   onClick(x: number, y: number) {
     if (!this.hasWinner) {
@@ -63,8 +65,25 @@ export class TicTacToeComponent {
 
     if (cont === 3) {
       this.hasWinner = true;
+      this.marcador.push(jugadorActual);
+    }
+    if (!this.hasWinner && this.isBoardFull()) {
+      this.hasDraw = true;
+      this.marcador.push("Empate");
     }
   }
+
+  isBoardFull(): boolean {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (this.tablero[i][j] === "") {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   resetGame() {
     this.tablero = [
       ["", "", ""],
